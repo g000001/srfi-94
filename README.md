@@ -1,5 +1,6 @@
-* SRFI 94: Type-Restricted Numerical Functions
-- Copyright (C) Aubrey Jaffer 2006. All Rights Reserved.
+# SRFI 94 for CL: Type-Restricted Numerical Functions
+
+* Copyright (C) Aubrey Jaffer 2006. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

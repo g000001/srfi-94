@@ -1,4 +1,4 @@
-(cl:in-package :srfi-94.internal)
+(cl:in-package "https://github.com/g000001/srfi-94#internals")
 
 (cl:defconstant +eof+
   (if (cl:boundp '+eof+)
@@ -47,7 +47,7 @@
   `(cl:setq ,var ,val))
 
 (cl:declaim (cl:inline list-tail vector-set! list-ref vector->list list->vector
-                       quotient set-car! set-cdr! eqv?
+                       set-car! set-cdr! eqv?
                        assq assv assoc for-each memq))
 
 (defun eqv? (x y)
@@ -144,9 +144,7 @@
         `(defun ,name ,(to-proper-lambda-list args)
            ,@body ))
       `(cl:progn
-         (cl:eval-when (:compile-toplevel :load-toplevel :execute)
-           (cl:setf (cl:fdefinition ',name-args)
-                    (cl:function cl:values) ))
+         (cl:declaim (cl:ftype cl:function ,name-args))
          (cl:setf (cl:fdefinition ',name-args)
                   ,(car body) ))))
 

@@ -1,14 +1,11 @@
 ;;;; srfi-94.lisp
 
-(cl:in-package :srfi-94.internal)
-;; (in-readtable :srfi-94)
-
-(def-suite srfi-94)
-
-(in-suite srfi-94)
+(cl:in-package "https://github.com/g000001/srfi-94#internals")
 
 
-(define-function (type-error procedure . args) (apply #'error procedure args))
+(define-function (type-error procedure . args)
+  (apply #'error procedure args))
+
 ;@
 (define-function (integer-expt x1 x2)
   (cond ((and (exact?  x1) (integer? x1)

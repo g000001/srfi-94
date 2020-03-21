@@ -1,13 +1,13 @@
-(cl:in-package :srfi-94.internal)
-;; (in-readtable :srfi-94)
+(cl:in-package "https://github.com/g000001/srfi-94#internals")
 
-(def-suite srfi-94)
 
-(in-suite srfi-94)
+(def-suite* srfi-94)
+
 
 (defmacro e? (&body body)
   `(signals (cl:error)
      ,@body))
+
 
 (test real-foo
   (let ((n #c(1 1)))
@@ -21,21 +21,26 @@
     (e? (real-atan n))
     (e? (atan n n))))
 
+
 (test real-sqrt
   (e? (real-sqrt -8))
   (e? (real-sqrt #c(1 1)))
   (e? (integer-sqrt -8))
   (e? (integer-sqrt #c(1 1))))
 
+
 (test integer-log
   (e? (integer-log 10 -2))
   (e? (integer-log 10 2.0)))
 
+
 (test integer-expt
   (e? (integer-expt 0 3.0)))
 
+
 (test real-expt
   (e? (real-expt 0.0 #c(1 1))))
+
 
 (test quo
   (for-all ((x1 (gen-integer))
@@ -47,4 +52,5 @@
   (is (= (mod .666d0 1/5)
          0.06599999999999995d0)))
 
-;;; eof
+
+;;; *EOF*
